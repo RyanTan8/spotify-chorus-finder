@@ -10,7 +10,7 @@ const client = new Client({
     onReady() {
         // document.getElementById("ready").innerText = "Client ready.";
     }
-})
+});
 /*
 document.querySelector("submit").addEventListener("click", function() {
     document.getElementById("ready").innerText = "aaaaaa";
@@ -40,6 +40,8 @@ async function getChorus(id) {
         }
         if(track.artists.length > 1)
             artists += track.artists[track.artists.length - 1].name;
+        if(track.artists.length == 1)
+            artists += track.artists[0].name;
         rtn += "Artists: " + artists + "\n";
         totalRtn += rtn;
     })
