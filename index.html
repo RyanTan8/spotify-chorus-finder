@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="shortcut icon" type="image/png" href="color.png" />
+  <style>
+    input {
+      border: 1px solid black;
+      margin: auto;
+      display: block;
+    }
+
+    h1 {
+      text-align: center;
+      border: 10px solid rgb(48, 226, 31);
+      background: rgb(48, 226, 31, 0.6);
+    }
+
+    .container {
+      padding-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+  <title>Spotify Chorus Finder</title>
+</head>
+
+<body>
+  <h1>Spotify Chorus Finder</h1>
+  <input type="text" id="song" size="73">
+  <div class="container">
+    <button id="submit" type="button" class="btn btn-outline-dark" onclick="getLink()">Get chorus</button>
+  </div>
+
+  <script>
+    function getLink() {
+      let songLink = document.getElementById("song").value;
+      songID = (songLink.split("?si")[0].split("https://open.spotify.com/track/")[1]);
+      redirect = (document.URL + songID);
+      //alert(redirect);
+      document.location.href = redirect;
+    } 
+  </script>
+</body>
+
+</html>
