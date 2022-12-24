@@ -4,6 +4,7 @@ var static = require('node-static');
 var fs = require('fs');
 var url = require('url');
 var chorus = require('./init');
+const PORT = process.env.PORT || 3030;
 
 var file = new(static.Server)(__dirname);
 
@@ -36,13 +37,13 @@ let handleRequest = (request, response) => {
   }
 };
 
-server = http.createServer(handleRequest).listen(8888);
+server = http.createServer(handleRequest).listen(PORT);
 
 
 server.on('error', (e) => {
   console.log('Address in use, retrying...');
   setTimeout(() => {
     server.close();
-    server.listen(8888);
+    server.listen(PORT);
   }, 1000);
 });
