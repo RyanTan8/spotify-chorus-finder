@@ -3,7 +3,7 @@ var http = require('http');
 var static = require('node-static');
 var fs = require('fs');
 var url = require('url');
-let chorus = require('./init');
+var chorus = require('./init');
 
 var file = new(static.Server)(__dirname);
 
