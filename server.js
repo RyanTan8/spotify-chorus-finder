@@ -13,7 +13,7 @@ let handleRequest = (request, response) => {
   var q = url.parse(request.url, true);
   var filename = "." + q.pathname;
   var pathname = url.parse(request.url).pathname;
-  if (pathname != '/') {
+  if (pathname != '/' && pathname.length == 23) {
     response.writeHead(200, { 'Content-Type': 'text/enriched', 'Content-Length': ''});
     var songID = url.parse(request.url).pathname.substr(1);
     response.write('Song ID: ' + songID + '\n');
