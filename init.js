@@ -32,9 +32,9 @@ async function getChorus(id) {
     getData(id).then(track => {
         var rtn = "";
         var artists = "";
-        rtn += "\n" + track.name + "\n";
+        rtn += "<h2>" + track.name + "</h2>";
         seconds = track.duration / 1000.0;
-        rtn += "\n" + "Duration: " + parseInt(seconds / 60) + " minutes " + Math.floor(seconds % 60) + " seconds\n";
+        rtn += "<div><p>" + "Duration: " + parseInt(seconds / 60) + " minutes " + Math.floor(seconds % 60) + " seconds</p></div>";
         for(var i = 0; i < track.artists.length - 1; i++) {
             artists += track.artists[i].name + ", ";
         }
@@ -42,12 +42,12 @@ async function getChorus(id) {
             artists += track.artists[track.artists.length - 1].name;
         if(track.artists.length == 1)
             artists += track.artists[0].name;
-        rtn += "Artists: " + artists + "\n";
+        rtn += "<div><p>Artists: " + artists + "</p></div>";
         totalRtn += rtn;
     })
     getAA(id).then(data => {
         var rtn = "";
-        rtn += ("Tempo: " + data.track.tempo + " bpm\n");
+        rtn += ("<div><p>Tempo: " + data.track.tempo + " bpm</p></div>");
         //console.log(data.sections);
         //console.log(data.track.loudness);
 
@@ -56,7 +56,7 @@ async function getChorus(id) {
             if (data.segments[i].loudness_max > data.segments[maxVolumeIndex].loudness_max)
                 maxVolumeIndex = i
         }
-        rtn += ("Loudest segment: Lasts " + data.segments[maxVolumeIndex].loudness_max_time + " seconds, at " + data.segments[maxVolumeIndex].loudness_max + " DB\n");
+        rtn += ("<div><p>Loudest segment: Lasts " + data.segments[maxVolumeIndex].loudness_max_time + " seconds, at " + data.segments[maxVolumeIndex].loudness_max + " DB</p>");
         let segmentsSeconds = data.segments[maxVolumeIndex - 1].start;
 
         var maxVolumeIndex = 0;
@@ -65,9 +65,9 @@ async function getChorus(id) {
                 maxVolumeIndex = i
         }
         loudestSeconds = data.sections[maxVolumeIndex].start;
-        rtn += ("Loudest section: " + parseInt(loudestSeconds / 60) + " minutes " + Math.floor(loudestSeconds % 60) + " seconds\n");
+        rtn += ("<p>Loudest section: " + parseInt(loudestSeconds / 60) + " minutes " + Math.floor(loudestSeconds % 60) + " seconds</p></div>");
         let sectionsSeconds = data.sections[maxVolumeIndex - 1].start;
-        rtn += ("\nChorus: " + parseInt(sectionsSeconds / 60) + " minutes " + Math.floor(sectionsSeconds % 60) + " seconds\n");
+        rtn += ("<div id='chorus'><p>Chorus: " + parseInt(sectionsSeconds / 60) + " minutes " + Math.floor(sectionsSeconds % 60) + " seconds</p></div>");
         // console.log(rtn);
         totalRtn += rtn;
     })
