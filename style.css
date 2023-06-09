@@ -1,0 +1,44 @@
+.container {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+div {
+    margin-left: 20px;
+    margin-top: 15px;
+    width: 50%;
+    padding: 20px;
+    border-radius: 20px;
+    border: 10px solid rgba(32, 214, 82, 0.4);
+    box-sizing: border-box;
+    transition: transform 0.3s;
+}
+
+div:hover {
+    transform: scale(1.05);
+    box-shadow: 5px 5px 10px 1px #000;
+}
+
+h2 {
+    margin-left: 20px;
+    padding-left: 20px;
+    font-family: "Arial", sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+}
+
+h4 {
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+p {
+    font-family: "Arial", sans-serif;
+    font-size: 18px;
+    color: #777;
+}
